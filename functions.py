@@ -26,6 +26,7 @@ class User:
         self.work = []
         self.sport = []
         self.orga_clean = []
+        self.activity = []
 
     class Work:
         priority = 1
@@ -56,13 +57,24 @@ class User:
 
     class Orga_Clean:
         priority = 3
-        def __init__(self, task, duration, periodity, fixed_days=False):
+        def __init__(self, task, duration, periodicity, fixed_days=False):
             self.task = task
             self.duration = duration
-            self.periodity = periodity
+            self.periodicity = periodicity
             if fixed_days:
                 self.day, self.days = set_days()
                 # self.last_day = self.day + self.days
+    
+    class Activity:
+        priotity = 2
+        def __init__(self, activity, time, day, duration, one_event=True):
+            self.activity = activity
+            self.time = time
+            self.day = day
+            self.duration = duration
+            if not one_event:
+                self.periodicity = input("Please input Periodicity:")
+                print(self.periodicity)
 
     class Sleep:
         daily = True
